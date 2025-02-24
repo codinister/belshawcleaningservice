@@ -1,0 +1,16 @@
+
+@media(min-width: 35em){
+.slide-container{
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+    .default-nav{
+        position: absolute;
+        top: 30%;
+        margin: 3rem;
+    }
+    img{
+        width: 100%;
+    }
+}
+}

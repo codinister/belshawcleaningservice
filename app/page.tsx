@@ -1,95 +1,184 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+'use client'
+
+
+import Headertitle from '@/components/Headertitle';
+import Link from 'next/link';
+import Image from 'next/image';
+import Slider from '@/components/Slider';
+import FreeQuote from '@/components/FreeQuote';
+import FreeQuoteQuestions from '@/components/FreeQuoteQuestions';
+import useGetQuery from '@/data/queryprovider/useGetQuery';
+import { PostType } from '@/@types/postTypes';
+import BlockContent from '@sanity/block-content-to-react';
 
 export default function Home() {
-  return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol>
-          <li>
-            Get started by editing <code>app/page.tsx</code>.
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+  const post: PostType = useGetQuery('post', '/post') || [];
 
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.secondary}
-          >
-            Read our docs
-          </a>
+  //Get Residention Cleaning
+  const residentialInfo = Object.values(post)
+    .filter((v) => {
+      return v.slug === 'residential-cleaning-excerpt';
+    })
+    .map((vl, k) => (
+      <div key={k}>
+        <h1>{vl.title}</h1>
+        <div>
+          <BlockContent
+            blocks={vl.body}
+            projectId={process.env.NEXT_PUBLIC_SANITY_ID}
+            dataset="production"
+          />
         </div>
-      </main>
-      <footer className={styles.footer}>
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+      </div>
+    ));
+
+  //Get Residention Cleaning Services thumbnails
+  const residentialCleaning = Object.values(post)
+    .filter((v) => {
+      return v.cat_title === 'Residential Cleaning  ';
+    })
+    .map((vl, k) => (
+      <div key={k}>
+        <div className="imageBx">
           <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
+            width="4"
+            height="3"
+            layout="responsive"
+            src={vl.image + ''}
+            alt=""
           />
-          Learn
-        </a>
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+        </div>
+        <h3>{vl.title}</h3>
+      </div>
+    ));
+
+  //Get Commercial Cleaning
+  const commercialInfo = Object.values(post)
+    .filter((v) => {
+      return v.slug === 'commercial-cleaning-excerpt';
+    })
+    .map((vl, k) => (
+      <div key={k}>
+        <h1>{vl.title}</h1>
+        <div>
+          <BlockContent
+            blocks={vl.body}
+            projectId={process.env.NEXT_PUBLIC_SANITY_ID}
+            dataset="production"
+          />
+        </div>
+      </div>
+    ));
+
+  //Get Commercial Cleaning Services thumbnails
+  const commercialCleaning = Object.values(post)
+    .filter((v) => {
+      return v.cat_title === 'Commercial Cleaning ';
+    })
+    .map((vl, k) => (
+      <div key={k}>
+        <div className="imageBx">
           <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
+            width="4"
+            height="3"
+            layout="responsive"
+            src={vl.image + ''}
+            alt=""
           />
-          Examples
-        </a>
-        <a
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+        </div>
+        <h3>{vl.title}</h3>
+      </div>
+    ));
+
+  //Get Laundry Service
+  const laundryservice = Object.values(post)
+    .filter((v) => {
+      return v.slug === 'laundry-services';
+    })
+    .map((vl, k) => (
+      <div key={k} className="homepage-laundry">
+        <div>
+          <h1>{vl.title}</h1>
+          <div>
+            <BlockContent
+              blocks={vl.body}
+              projectId={process.env.NEXT_PUBLIC_SANITY_ID}
+              dataset="production"
+            />
+          </div>
+        </div>
+        <div>
           <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
+            width="4"
+            height="3"
+            layout="responsive"
+            src={vl.image + ''}
+            alt=""
           />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+        </div>
+      </div>
+    ));
+
+  //Get Our Customes
+
+  const ourcustomers = Object.values(post)
+    .filter((v) => {
+      return v.cat_title === 'Customers';
+    })
+    .map((vl, k) => (
+      <div key={k}>
+        <div className="custbx">
+          <div>
+            <Image
+              width="4"
+              height="3"
+              layout="responsive"
+              src={vl.image + ''}
+              alt=""
+            />
+          </div>
+          <h5>{vl.title}</h5>
+        </div>
+      </div>
+    ));
+
+  return (
+    <>
+      <section className="slideshow">
+        <Slider />
+        <Headertitle />
+      </section>
+
+      <section className="sectiontwo residentialCleaning">
+        <div className="container">{residentialInfo}</div>
+        <div className="container">{residentialCleaning}</div>
+        <Link href="/services">
+          <a>View All</a>
+        </Link>
+      </section>
+      <section className="sectiontwo residentialCleaning">
+        <div className="container">{commercialInfo}</div>
+        <div className="container">{commercialCleaning}</div>
+        <Link href="/services">
+          <a>View All</a>
+        </Link>
+        <br />
+      </section>
+      <section className="sectionone aboutus">{laundryservice}</section>
+      <section className="sectiontwo ourclients">
+        <h1>Our Clients</h1>
+        <div className="container">{ourcustomers}</div>
+        <br />
+      </section>
+      <section className="sectionone">
+        <div className="container">
+          <div>
+            <FreeQuote />
+            <FreeQuoteQuestions />
+          </div>
+        </div>
+        <br />
+      </section>
+    </>
   );
 }
