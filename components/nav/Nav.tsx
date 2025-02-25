@@ -38,9 +38,8 @@ const Nav = () => {
             <li className="logo-img-bx">
               <Link href="/">
                   <Image
-                    width="7"
-                    height="2"
-                    layout="responsive"
+                    width="200"
+                    height="70"
                     src="/logo.png"
                     alt=""
                   />
@@ -52,7 +51,7 @@ const Nav = () => {
               </Link>
             </li>
             <li>
-              <Link href="/#">
+              <Link href="!#">
                 About Us
               </Link>
               <ul>
@@ -85,7 +84,7 @@ const Nav = () => {
               </ul>
             </li>
             <li>
-              <Link href="/#">
+              <Link href="!#">
                 Products 
               </Link>
               <ul>

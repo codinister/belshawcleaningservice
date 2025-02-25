@@ -91,10 +91,7 @@
   .container{
     display: flex;
     gap: 3rem;
-    width: calc(100% - 30px);
-    margin-inline: auto;
-    margin-inline: auto;
-    margin-block: 0;
+padding-inline: 5.6rem;
     flex-wrap: wrap;
     div{
       flex: 1rem 1 1;

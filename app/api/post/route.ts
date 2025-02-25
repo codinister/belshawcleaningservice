@@ -21,7 +21,7 @@ export async function GET() {
       'image': mainImage.asset->url,
       "cat_title" : categories[]->title,
       "slug": slug.current,
-      "excerpt": array::join(string::split((pt::text(body)), "")[0..100], "") + "...",
+      "excerpt": array::join(string::split((pt::text(body)), "")[0..400], "") + "...",
       }
       `
     );

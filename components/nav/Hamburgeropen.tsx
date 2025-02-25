@@ -14,10 +14,10 @@ const Hamburgeropen = ({ opennav, name }: obj) => {
             <div>
               <Image
                 src="/hamburger-icon.png"
-                width="5"
-                height="5"
+                width="50"
+                height="50"
                 alt=""
-                layout="responsive"
+      
               />
             </div>
           </div>
